@@ -3,6 +3,31 @@ package com.bobo.common.utils;
 import org.junit.Test;
 
 public class StringUtilTest {
+	@Test//判断是否是手机号
+	public void testIsPhone() {
+	 String str ="187999999991";
+	 boolean b = StringUtil.isPhone(str);
+	 if(b) {
+		 System.out.println("是");
+	 }else {
+		 System.out.println("不是");
+
+	 }
+		
+	}
+	
+	@Test//判断是否数字
+	public void testIsNumber() {
+	 String str ="1aaaaa4.0";
+	 boolean b = StringUtil.isNumber(str);
+	 if(b) {
+		 System.out.println("是数字");
+	 }else {
+		 System.out.println("不是数字");
+
+	 }
+		
+	}
 
 	@Test
 	public void testHasLength() {
