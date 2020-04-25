@@ -16,16 +16,13 @@ public class DateUtilTest {
 		 * ，将上面{2}的位置使用DateUtil工具类中的getDateByFullMonth()返回值替换
 		 * 。最后打印出正确拼接的SQL字符串。
 		 */
-		
-		
-		
 		String sql = "select * from t_order where create_time>='{1}' and create_time<='{2}' ";
 		
-		Date initDate = DateUtil.getInitMonth(new Date());
-		Date endMonth = DateUtil.getEndMonth(new Date());
+		Date initDate = DateUtil.getInitMonth(new Date());//获取月初
+		Date endMonth = DateUtil.getEndMonth(new Date());//获取月末
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String date1 = fm.format(initDate);
-		String date2 = fm.format(endMonth);
+		String date1 = fm.format(initDate);//格式化
+		String date2 = fm.format(endMonth);//格式化
 		
 		String newSql = sql.replace("{1}", date1).replace("{2}", date2);
 		
