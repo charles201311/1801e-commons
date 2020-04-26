@@ -34,25 +34,26 @@ public class StreamUtil {
 			}
 		}
 	}
+	
+	
+	
 	/*
 	* 方法2：传入一个文本文件对象，默认为UTF-8编码，返回该文件内容(3分)，要求方法内部调用上面第1个方法关闭流(3分)
 	*/
 	public static String readTextFile(InputStream src){
-		//构建BufferedReader
-		BufferedReader reader = new BufferedReader(new InputStreamReader(src));
-	    String  str=null;
-	    StringBuffer sb = new StringBuffer();
+		
+		byte[] b = new byte[1024];
+		int len;
 		try {
-			while((str=reader.readLine())!=null) {
-				sb.append(str);
+			while((len =src.read(b))!=-1) {
+			return  new String(b, 0, len);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
-			closeAll(reader);//关流
 		}
+		return null;
+	
 		
-		return sb.toString();
 		
 	
 	}
@@ -66,7 +67,6 @@ public class StreamUtil {
 			FileInputStream stream = new FileInputStream(txtFile);
 			return readTextFile(stream);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
