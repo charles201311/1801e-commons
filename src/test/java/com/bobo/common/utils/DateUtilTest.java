@@ -10,6 +10,14 @@ public class DateUtilTest {
 	
 	
 	@Test
+	public void testSubDate() {
+		
+		Date date = DateUtil.SubDate(new Date(), 24);
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(fm.format(date));
+	}
+	
+	@Test
 	public void testSql() {
 		/**
 		 * 将上面{1}的位置使用DateUtil工具类中的getDateByInitMonth()返回值替换

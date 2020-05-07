@@ -6,8 +6,11 @@ public class RandomUtilTest {
 
 	@Test
 	public void testRandom() {
+		String x = RandomUtil.random(11);
+		System.out.println(x);
+		
 		for (int i = 0; i < 10; i++) {
-			System.out.println(RandomUtil.random(1, 130));
+		//	System.out.println(RandomUtil.random(1, 130));
 		}
 	
 		
