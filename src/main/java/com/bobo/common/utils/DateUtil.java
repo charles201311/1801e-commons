@@ -11,21 +11,54 @@ import java.util.Date;
  * @date: 2020年4月23日 下午4:38:21
  */
 public class DateUtil {
-	
-	
+
+	/**
+	 * 功能：获取人性化时间，例如5分钟之内则显示“刚刚”，其它显示16分钟前、2小时前、3天前、4月前、5年前等
+	 *
+	 * @param Date date 源时间。
+	 * @return 人性化时间
+	 */
+	public static String getDisplayTime(Date date) {
+		Date now = new Date();
+		long t1 = now.getTime();
+		long t2 = date.getTime();
+		long t = (t1 - t2) / 1000 / 60;
+		if ((t / 60 / 24 / 30 / 12) >= 1) {
+			return (t / 60 / 24 / 30 / 12) + "年前";
+		} else {
+			if ((t / 60 / 24 / 30) >= 1) {
+				return (t / 60 / 24 / 30) + "月前";
+			} else {
+				if ((t / 60 / 24) >=1) {
+					return (t / 60 / 24) + "天前";
+				} else {
+					if ((t / 60) >=1) {
+						return (t / 60) + "小时前";
+					} else {
+						if (t >= 1) {
+							return t + "分钟前";
+						} else {
+							return "刚刚";
+						}
+					}
+				}
+			}
+		}
+	}
+
 	/**
 	 * 
-	 * @Title: SubDate 
+	 * @Title: SubDate
 	 * @Description: TODO
 	 * @param date
 	 * @param hours
 	 * @return
-	 * @return: Date  返回date 减去指定小时的时间
+	 * @return: Date 返回date 减去指定小时的时间
 	 */
-	public static  Date SubDate(Date date,int hours) {
+	public static Date SubDate(Date date, int hours) {
 		Calendar c = Calendar.getInstance();
-		c.setTime(date);//用传入的日期再次初始化日历类
-		c.add(Calendar.HOUR_OF_DAY, -hours);//减去指定的小时
+		c.setTime(date);// 用传入的日期再次初始化日历类
+		c.add(Calendar.HOUR_OF_DAY, -hours);// 减去指定的小时
 		return c.getTime();
 	}
 
